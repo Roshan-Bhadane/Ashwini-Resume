@@ -1,0 +1,118 @@
+/* =========================================
+   NANO-BANANO ANIMATION LIBRARY (v2 - Snappy)
+   ========================================= */
+
+:root {
+    --nano-ease-snappy: cubic-bezier(0.16, 1, 0.3, 1);
+    --nano-duration: 1s;
+}
+
+/* Base Transition Class */
+.nano-element {
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+    transition: all var(--nano-duration) var(--nano-ease-snappy);
+    will-change: opacity, transform;
+    filter: blur(10px);
+}
+
+.nano-active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+}
+
+/* Delays */
+.nano-delay-1 {
+    transition-delay: 0.1s;
+}
+
+.nano-delay-2 {
+    transition-delay: 0.2s;
+}
+
+.nano-delay-3 {
+    transition-delay: 0.3s;
+}
+
+.nano-delay-4 {
+    transition-delay: 0.4s;
+}
+
+/* Glowing Orbs Background */
+.bg-effects {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: orbFloat 20s infinite ease-in-out;
+}
+
+.orb-1 {
+    width: 400px;
+    height: 400px;
+    background: var(--color-accent-1);
+    top: -100px;
+    left: -100px;
+    animation-delay: 0s;
+}
+
+.orb-2 {
+    width: 500px;
+    height: 500px;
+    background: var(--color-accent-2);
+    bottom: -150px;
+    right: -150px;
+    animation-delay: -5s;
+}
+
+.orb-3 {
+    width: 300px;
+    height: 300px;
+    background: #0d2550;
+    top: 40%;
+    left: 60%;
+    opacity: 0.6;
+    animation-delay: -10s;
+}
+
+@keyframes orbFloat {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(50px, -50px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-30px, 40px) scale(0.9);
+    }
+}
+
+/* Magnetic Button helper */
+.magnet-btn {
+    display: inline-block;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 3D Tilt */
+.nano-tilt-card {
+    transition: transform 0.1s ease-out;
+    /* Faster response */
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}

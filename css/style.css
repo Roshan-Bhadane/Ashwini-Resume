@@ -1,0 +1,558 @@
+/* =========================================
+   MAIN STYLESHEET - Ashwini Sonawane (v2 - Modern Classic)
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Space+Grotesk:wght@300;400;500;700&display=swap');
+
+:root {
+    /* Modern Classic Palette (Luxury Dark) */
+    --color-bg: #121212;
+    /* Deep Matte Black */
+    --color-bg-alt: #1a1a1a;
+    /* Slightly lighter for cards */
+    --color-text-main: #f0f0f0;
+    /* Soft White */
+    --color-text-sec: #a0a0a0;
+    /* Muted Grey */
+
+    /* Classic Accents */
+    --color-accent-1: #d4af37;
+    /* Metallic Gold */
+    --color-accent-2: #c5a028;
+    /* Darker Gold */
+    --color-accent-3: #ffffff;
+    /* Pure White details */
+
+    --color-card: rgba(255, 255, 255, 0.02);
+    --color-card-border: rgba(212, 175, 55, 0.15);
+    /* Subtle Gold Border */
+    --color-card-hover: rgba(212, 175, 55, 0.05);
+
+    --font-heading: 'Playfair Display', serif;
+    /* Elegant Serif */
+    --font-body: 'Space Grotesk', sans-serif;
+    /* Clean Modern Sans */
+
+    --nav-height: 80px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text-main);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    color: var(--color-text-main);
+    font-weight: 700;
+}
+
+h1 {
+    font-size: clamp(48px, 8vw, 96px);
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: clamp(32px, 5vw, 48px);
+    color: var(--color-accent-1);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+}
+
+section {
+    padding: 120px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 90%;
+    position: relative;
+    z-index: 2;
+}
+
+/* =========================================
+   COMPONENTS
+   ========================================= */
+
+/* Button Modern Classic */
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border: 1px solid var(--color-accent-1);
+    color: var(--color-accent-1);
+    background: transparent;
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    margin-right: 20px;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: var(--color-accent-1);
+    transition: width 0.4s ease;
+    z-index: -1;
+}
+
+.btn:hover {
+    color: #121212;
+}
+
+.btn:hover::before {
+    width: 100%;
+}
+
+/* Glass Card v2 - Luxury */
+.glass-card {
+    background: var(--color-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--color-card-border);
+    border-radius: 8px;
+    padding: 40px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-card:hover {
+    background: var(--color-card-hover);
+    border-color: var(--color-accent-1);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
+}
+
+/* =========================================
+   NAVBAR (Classic Functional)
+   ========================================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(18, 18, 18, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-card-border);
+    padding: 20px 5%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0;
+    box-shadow: none;
+    transform: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-sec);
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background: var(--color-accent-1);
+    transition: width 0.3s ease;
+}
+
+/* Hide mobile icons by default */
+.mobile-icon,
+.mobile-nav-item {
+    display: none;
+}
+
+.nav-links a:hover {
+    color: var(--color-accent-1);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 0px;
+    color: var(--color-accent-1);
+}
+
+.navbar .btn {
+    border-radius: 2px;
+    padding: 10px 24px;
+    font-size: 12px;
+    margin-right: 0;
+}
+
+/* =========================================
+   HERO SECTION
+   ========================================= */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.hero-text h3 {
+    color: var(--color-accent-1);
+    font-size: 16px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.hero-text p {
+    font-size: 18px;
+    max-width: 500px;
+    margin: 30px 0 40px 0;
+    color: var(--color-text-sec);
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+/* Image Styles */
+.hero-image {
+    position: relative;
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--color-card-border);
+    line-height: 0;
+}
+
+.hero-image picture {
+    display: block;
+    width: 100%;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+.hero-image:hover img {
+    transform: scale(1.02);
+}
+
+/* =========================================
+   MARQUEE SKILLS
+   ========================================= */
+.marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    padding: 60px 0;
+    border-top: 1px solid var(--color-card-border);
+    border-bottom: 1px solid var(--color-card-border);
+    background: var(--color-bg-alt);
+    scroll-margin-top: 120px;
+    /* Offset for fixed navbar */
+}
+
+.marquee-content {
+    display: inline-flex;
+    animation: marquee 30s linear infinite;
+}
+
+.marquee-item {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.4);
+    /* Brighter default */
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+    margin: 0 50px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s;
+}
+
+/* Alternate highlight for visual interest */
+.marquee-item:nth-child(even) {
+    color: var(--color-accent-1);
+    /* Gold Highlight default */
+    opacity: 1;
+}
+
+.marquee-item:hover {
+    color: var(--color-accent-2);
+    opacity: 1;
+}
+
+.marquee-item i {
+    font-size: 32px;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* =========================================
+   PROJECTS
+   ========================================= */
+.project-card-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+.folder-icon {
+    color: var(--color-accent-1);
+}
+
+/* =========================================
+   CONTACT
+   ========================================= */
+.contact-container {
+    padding: 80px;
+    border-radius: 8px;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-card-border);
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 900px) {
+    section {
+        width: 90%;
+        padding: 60px 0;
+        overflow-x: hidden;
+    }
+
+    /* Fix for mobile overflow within cards */
+    .glass-card {
+        padding: 24px;
+    }
+
+    .contact-container {
+        padding: 40px 20px;
+    }
+
+    /* Prevent text overflow on small screens */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    span,
+    li,
+    p {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+        hyphens: auto;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    /* Hero Section Mobile Optimization */
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+        gap: 30px;
+    }
+
+    /* Move Image to Top for Mobile-First feel */
+    .hero-image {
+        order: -1;
+        max-width: 220px;
+        /* Reduced to requested mobile size */
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .hero-text {
+        width: 100%;
+    }
+
+    .hero-text h3 {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .hero-text h1 {
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+
+    .hero-text p {
+        margin: 15px auto 30px auto;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .hero-text .btn {
+        display: block;
+        margin: 10px auto;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero {
+        padding-top: 20px;
+        padding-bottom: 100px;
+        align-items: flex-start;
+        min-height: auto;
+    }
+
+    .hero-image img {
+        height: auto;
+        object-fit: contain;
+    }
+
+    /* Mobile Nav - Modern Tab Bar Style */
+    .navbar {
+        top: auto;
+        bottom: 0;
+        width: 100%;
+        justify-content: space-around;
+        padding: 10px 0;
+        background: rgba(18, 18, 18, 0.98);
+        border-top: 1px solid var(--color-card-border);
+        border-bottom: none;
+        height: 70px;
+        opacity: 0.95;
+    }
+
+    .logo,
+    .btn-nav-hide {
+        display: none !important;
+    }
+
+    .nav-links {
+        gap: 0;
+        width: 100%;
+        justify-content: space-evenly;
+    }
+
+    .nav-links a {
+        font-size: 9px;
+        /* Smaller font for 5 items */
+        letter-spacing: 0.5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        opacity: 0.7;
+        transition: opacity 0.3s;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+        opacity: 1;
+        color: var(--color-accent-1);
+    }
+
+    /* Show icons and mobile items on mobile */
+    .mobile-icon,
+    .mobile-nav-item {
+        display: block !important;
+    }
+
+    .mobile-nav-item {
+        display: flex !important;
+        /* Ensure flex for centering */
+    }
+
+    .mobile-icon {
+        font-size: 18px;
+        /* Slightly smaller icons to fit */
+        margin-bottom: 2px;
+    }
+
+    /* Hide underlines on mobile */
+    .nav-links a::after {
+        display: none;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    /* Faster marquee on mobile */
+    .marquee-content {
+        animation-duration: 15s;
+    }
+}
